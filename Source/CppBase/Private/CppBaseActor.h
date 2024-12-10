@@ -49,6 +49,8 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void ShowActorInformation();
 
+	FVector SinMovement();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -64,5 +66,14 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent * Mesh;
+
+	UPROPERTY(EditAnywhere)
+	float Amplitude2 = 100;
+
+	UPROPERTY(EditAnywhere)
+	float Frequency2 = 10;
+
+	UPROPERTY(EditAnywhere)
+	FVector InitialLocation2 = FVector::ZeroVector;
 
 };

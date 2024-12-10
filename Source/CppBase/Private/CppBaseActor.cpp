@@ -20,7 +20,8 @@ ACppBaseActor::ACppBaseActor()
 void ACppBaseActor::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &ACppBaseActor::OnTimeToSpawn, TimerRate, true);
+	InitialLocation2 = this->GetActorLocation();
+	ShowActorInformation();
 	
 }
 
@@ -38,4 +39,15 @@ void ACppBaseActor::ShowActorInformation()
 	UE_LOG(LogTemp, Display, TEXT("EnemyNum: %d"), EnemyNum);
 	UE_LOG(LogTemp, Display, TEXT("IsAlive: %d"), IsAlive);
 }
+
+FVector ACppBaseActor::SinMovement()
+{
+
+	FVector NewLocation;
+	NewLocation.X = InitialLocation2.X;
+	NewLocation.Y = InitialLocation2.Y;
+
+	NewLocation.Z = (FMath::Sin(GetWorld()->GetTimeSeconds() * Frequency2)) * Amplitude2 + InitialLocation2.Z;
+	return NewLocation;
+};
 
